@@ -1,0 +1,676 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@100&family=Josefin+Sans:ital,wght@1,200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,423;1,423&display=swap");
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Architects Daughter", cursive, Arial, Helvetica, sans-serif;
+  letter-spacing: 3px;
+  text-align: center;
+  line-height: 2;
+  color: rgb(8, 22, 14);
+}
+
+/********************************************************/
+/* HEADER */
+.mainMenu {
+  font-family: "Josefin Sans";
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 10%;
+  background: rgba(166, 211, 188, 0.397);
+
+}
+
+#shopping-nav {
+  display: flex;
+  align-items: center;
+  background-color: rgba(175, 129, 236, 0.185);
+}
+
+/* THE SEARCH ICON INSIDE THE SEARCH INPUT */
+#search-nav {
+  font-family: FontAwesome;
+  font-style: normal;
+  width: 78%;
+  margin-left: 0.7rem;
+  min-height: 1.4rem;
+  font-size: 30px;
+  border: none;
+}
+
+.search-box input[type="search"] {
+  width: 100%;
+  padding: 10px;
+}
+
+.shopping-cart-nav {
+  font-size: 45px;
+  margin-right: 0.8rem;
+}
+
+
+.logo-text {
+  font-family: "Dancing Script", cursive;
+  font-size: 28px;
+}
+
+.menu-wrap {
+  position: relative;
+  /* IT SHOULS BE FIXED */
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+
+.menu-wrap .toggler {
+  position: absolute;
+  top: -57px;
+  left: 9px;
+  z-index: 2;
+  cursor: pointer;
+  /* TO INSERT THE CHECKBOX BEHIND THE MENU */
+  width: 60px;
+  height: 71px;
+  opacity: 0;
+  /* TRANPARENCY LEVEL TO HIDE CHECKBOX */
+}
+
+
+.menu-wrap .hamburger {
+  position: absolute;
+  z-index: 1;
+  width: 74px;
+  min-height: 60px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+
+/***********************************************************/
+/* THE HAMBURGER LINES */
+.menu-wrap .hamburger>.hamburgerLine {
+  position: relative;
+  flex: none;
+  width: 100%;
+  height: 2px;
+  background: rgb(2, 66, 34);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  /* IT TAKES TIME THE LINES TURN  */
+}
+
+
+.menu-wrap .hamburger>.hamburgerLine::before,
+/* THE SECOND LINE */
+.menu-wrap .hamburger>.hamburgerLine::after {
+  content: "";
+  /* TO INSERT STH INSIDE HTML WE USE AFTER AND BEFORE AS WELL*/
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 2px;
+  background: inherit;
+}
+
+
+.menu-wrap .hamburger>.hamburgerLine::after {
+  content: "Meny";
+  /* TO PUT MENU WORD AFTER THREE LINES */
+}
+
+
+.menu-wrap .hamburger>.hamburgerLine::after {
+  top: 10px;
+  /* WE USE THIS TO PUT THE THIRD LINE IN THIS POSITION */
+}
+
+
+.menu-wrap .toggler:checked+.hamburger>.hamburgerLine {
+  transform: rotate(135deg);
+  /* THE LINES TURN AROUND */
+}
+
+
+/***********************************************************/
+/* TOGGLER ANIMATION  */
+.menu-wrap .toggler:checked+.hamburger>.hamburgerLine::before,
+/* THE SECOND LINE */
+.menu-wrap .toggler:checked+.hamburger>.hamburgerLine::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+
+.menu-wrap .toggler:checked:hover+.hamburger>.hamburgerLine {
+  transform: rotate(225deg);
+}
+
+
+.menu-wrap .toggler:checked+.hamburger>.hamburgerLine::after {
+  opacity: 0;
+}
+
+
+/**********************************************************/
+/* THE TWO SEPERATE SELECTOR WHICH SHARE THE SAME PARENT */
+.menu-wrap .toggler:checked~.menu {
+  visibility: visible;
+}
+
+
+.menu-wrap .toggler:checked~.menu>.mobile-toggle {
+  transform: scale(1.1);
+}
+
+
+.menu-wrap .menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(235, 247, 238);
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  /* WHEN MY MENU OPENS THE  */
+}
+
+
+.menu-wrap .mobile-toggle>.menuList {
+  list-style: none;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+
+.menu-wrap .mobile-toggle>.menuList>.smoothScroll {
+  padding: 1rem;
+  text-decoration: none;
+  /*  transition: 0.2s ease; /* IT TAKES TIME TO HIDE THE SMOOTHSCROLL */
+  color: #000;
+}
+
+
+/*******************************************************************/
+/* MAIN */
+/* DESKTOP-IMG  */
+.desktop-img {
+  display: none;
+  width: 100%;
+  height: 70vh;
+  background-image: url("../image/golden-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.medlem-text,
+.medlem-btn {
+  position: absolute;
+}
+
+
+.medlem-text {
+  top: 30%;
+  left: 32%;
+  font-size: 40px;
+}
+
+
+.medlem-btn {
+  top: 40%;
+  left: 35%;
+  font-size: 35px;
+  background-color: transparent;
+  border: 4px solid rgb(24, 19, 19);
+  padding: 2rem 3.3rem;
+  text-decoration: none;
+  color: #000;
+}
+
+.medlem-btn:hover {
+  background-color: black;
+  color: white;
+  border: 1px white solid;
+}
+
+/**********************************************************************/
+/* slide show */
+.slider {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: rgb(248, 245, 241);
+}
+
+
+.slideshow {
+  position: relative;
+  width: 500%;
+  left: 0;
+  animation: 25s slider infinite;
+}
+
+
+.slide-image {
+  max-width: 20%;
+  float: left;
+}
+
+
+.slideshow:hover {
+  animation-play-state: paused;
+  /* TO PAUSE THE ANIMATION WHEN WE HOVER */
+}
+
+
+/***********************************************/
+/* SHOPPING BUTTON */
+.buying-button {
+  background: rgba(248, 245, 241, 0.013);
+}
+
+
+.shopping-button,
+.load-btn {
+  padding: 1rem 2rem;
+  font-size: 1.7rem;
+}
+
+
+.shopping-button {
+  background-color: white;
+  border: 3px solid rgba(248, 245, 241, 0.013);
+
+}
+
+
+.shopping-button:hover {
+  background-color: rgb(3, 58, 20);
+  color: rgb(236, 240, 240);
+}
+
+
+/*********************************************/
+/* ABOUT MATERAIAL */
+#about-materials {
+  padding: 13%;
+  background: rgb(243, 229, 229);
+  font-family: "Architects Daughter", cursive;
+}
+
+
+.intro-heading {
+  font-size: 20px;
+  padding: 1rem;
+
+}
+
+
+.intro-explanation {
+  padding: 1rem;
+}
+
+
+/**********************************************/
+/* PRESENTING TEAM */
+.presenting-team {
+  padding: 2rem;
+}
+
+
+.presenting-team,
+#contactForm,
+.contactFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.team-part-heading {
+  color: darkred;
+  font-size: 33px;
+}
+
+
+.introducing-member {
+  font-family: "Dancing Script", cursive;
+}
+
+
+.team-image {
+  padding: 2rem;
+}
+
+
+.manager-img {
+  width: 200px;
+  border-radius: 47%;
+}
+
+
+/**********************************************/
+/* DESKTOP-TEXT */
+.desktop-intro,
+.desktop-heading {
+  display: none;
+  /* DESKTOP TEXT DISPLAY WAS NONE HERE CHANGED TO BLOCK */
+  background: rgb(231, 251, 235);
+  padding: 5%;
+}
+
+
+.desktop-heading {
+  font-size: 3rem;
+}
+
+
+/*********************************************/
+/* FOLLOW BUTTON */
+.follow-btn {
+  padding: 1rem;
+  background-color: rgb(243, 237, 242);
+  font-size: 1rem;
+  border: 1px solid rgb(146, 6, 39);
+}
+
+
+.follow-btn:hover {
+  color: rgb(243, 239, 239);
+  background: rgb(94, 7, 29);
+}
+
+
+/*******************************************************************/
+/* MAIN TEXT */
+.reklam-heading {
+  font-family: "Bitter", serif;
+  font-size: 1rem;
+  margin: 0.1rem;
+  color: rgb(29, 2, 2);
+}
+
+
+.mainText {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+
+/*****************************************************/
+/* DESIGN.HTML */
+/* MAIN */
+.heading-design {
+  font-size: 2rem;
+}
+
+
+#image-boxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+.image-section {
+  width: 83%;
+  margin: 2rem;
+}
+
+
+.design-img {
+  width: 70%;
+  height: 65%;
+}
+
+
+.load-btn {
+  border: solid 1px gold;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+
+.load-btn:hover {
+  color: rgb(93, 226, 10);
+
+}
+
+
+/***************************************************/
+/* CONTACT FOOTER */
+.contactFooter {
+  padding: 2rem;
+  background-color: rgb(230, 216, 199);
+}
+
+
+.contactLine {
+  width: 100%;
+  height: 1px;
+  background: rgb(85, 83, 83);
+}
+
+
+.contactText,
+.contact-heading {
+  padding: 1rem 2rem;
+
+}
+
+
+.contactText {
+  color: rgb(104, 71, 28);
+}
+
+
+#firstname,
+#email,
+#bigMessage {
+  border-radius: 8px;
+  box-shadow: 0 0 10px;
+  margin: 0.5rem;
+}
+
+
+#contactForm input[type="text"],
+input[type="email"],
+#bigMessage {
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+
+.sendButton {
+  background-color: rgb(228, 226, 226);
+  padding: 1rem;
+  box-shadow: 0 0 5px;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+
+
+.gridLine {
+  width: 100%;
+  background-color: rgb(224, 201, 170);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 0.5rem;
+}
+
+
+.follow-social-media {
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 0.85rem;
+}
+
+
+/*****************************************************************/
+/* SOCIAL MEDIA ICON */
+.social-media {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
+.fa-facebook {
+  color: blue;
+}
+
+
+.fa-instagram {
+  color: palevioletred;
+}
+
+
+.fa-linkedin {
+  color: rgb(28, 103, 128);
+}
+
+
+figcaption {
+  display: block;
+  font-size: 2rem;
+  color: rgb(82, 3, 7);
+}
+
+
+/**********************************************/
+/* KEY FRAMES */
+@keyframes slider {
+  0% {
+    left: 0;
+  }
+
+  10% {
+    left: 0;
+  }
+
+  25% {
+    left: -100%;
+  }
+
+  45% {
+    left: -100%;
+  }
+
+  50% {
+    left: -200%;
+  }
+
+  70% {
+    left: -200%;
+  }
+
+  75% {
+    left: -300%;
+  }
+
+  100% {
+    left: -300%;
+  }
+
+}
+
+
+/**************************************************/
+/* MEDIA QUERY */
+@media screen and (min-width: 870px) and (max-width: 1440px) {
+
+  .mainMenu {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c3e2d25d;
+    min-height: 1%;
+  }
+
+  .menu-wrap,
+  .toggler {
+    top: 17px;
+  }
+
+  #shopping-nav,
+  .logo-text {
+    background-color: transparent;
+  }
+
+  .logo-text {
+    margin-right: -8rem;
+  }
+
+  #search-nav {
+    font-size: 31px;
+  }
+
+  .home-container {
+    display: block;
+  }
+
+  .desktop-img {
+    display: block;
+  }
+
+  #firstname,
+  #email,
+  #bigMessage {
+    width: 50rem
+  }
+
+}
+
+
+
+/* SCREENS OVER 500PX */
+@media screen and (min-width: 500px) and (max-width: 1440px) {
+
+  #image-boxes {
+    flex-direction: row;
+
+  }
+
+  .image-section {
+    width: 34%;
+  }
+
+  .desktop-intro,
+  .desktop-heading {
+    display: block;
+    /* DESKTOP TEXT DISPLAY WAS NONE HERE CHANGED TO BLOCK */
+  }
+
+  .sendButton {
+    padding: 1rem 3rem;
+
+  }
+
+}
